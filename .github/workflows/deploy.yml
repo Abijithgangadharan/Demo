@@ -9,4 +9,8 @@ jobs:
   deploy:
     runs-on: self-hosted
 
+    steps:
+      - name: List the file
+        uses: ls
+
   
