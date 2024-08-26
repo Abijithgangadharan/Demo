@@ -1,0 +1,23 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up SSH agent
+      uses: webfactory/ssh-agent@v0.8.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: SSH into EC2 and pull latest changes
+      run: |
+        ssh -o StrictHostKeyChecking=no ec2-user@ec2-98-81-177-145.compute-1.amazonaws.com << 'EOF'
+          cd /home/ec2-user
+          git pull origin main
+        EOF
