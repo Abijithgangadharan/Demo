@@ -10,5 +10,5 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: List the files
-        run: ls -la
+      - name: List files in /home/ec2-user/Demo
+        run: ls -la /home/ec2-user/Demo
