@@ -10,7 +10,5 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: List the file
-        uses: ls
-
-  
+      - name: List the files
+        run: ls -la
