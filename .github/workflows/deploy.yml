@@ -10,14 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - name: Set up SSH agent
-      uses: webfactory/ssh-agent@v0.8.1
+      uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: SSH into EC2 and pull latest changes
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@ec2-98-81-177-145.compute-1.amazonaws.com << 'EOF'
-          cd /home/ec2-user
+        ssh -o StrictHostKeyChecking=no ec2-user@98.81.177.145 << 'EOF'
+          cd /home/ec2-user/Demo
           git pull origin main
         EOF
