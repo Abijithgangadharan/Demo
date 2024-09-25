@@ -18,8 +18,8 @@ jobs:
 
       - name: Copy code to the target directory
         run: |
-          mkdir -p /home/ec2-user/Demo
-          cp -R . /home/ec2-user/Demo
+          sudo mkdir -p /home/ec2-user/Demo
+          sudo cp -R . /home/ec2-user/Demo
 
       - name: List files after deployment
         run: ls -la /home/ec2-user/Demo
