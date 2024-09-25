@@ -23,4 +23,4 @@ jobs:
 
       - name: List files after deployment
         run: ls -la /home/ec2-user/Demo
-
+ 
