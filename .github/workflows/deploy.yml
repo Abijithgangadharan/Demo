@@ -1,4 +1,4 @@
-name: Test Self-Hosted Runner
+name: Deploy Latest Code to Self-Hosted EC2
 
 on:
   push:
@@ -6,11 +6,21 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: List files in /home/ec2-user/Demo
+      - name: List files before deployment
         run: ls -la /home/ec2-user/Demo
+
+      - name: Copy code to the target directory
+        run: |
+          mkdir -p /home/ec2-user/Demo
+          cp -R . /home/ec2-user/Demo
+
+      - name: List files after deployment
+        run: ls -la /home/ec2-user/Demo
+
